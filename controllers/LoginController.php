@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 
+use Classes\Email;
 use Model\Usuario;
 use MVC\Router;
 
@@ -42,10 +43,21 @@ class LoginController
             //Revisar alerta vacia
             if(empty($alertas))
             {
-                
+               $resultado = $usuario->userExists();
+               if($resultado->num_rows)
+               {
+                   $alertas = Usuario::getAlertas();
+               } else {
+                   $usuario->hashPassword();
+                   $usuario->createToken();
+
+                   $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                   dd($email);
+                   dd($usuario);
+               }
             }
-        
         }
+
         $router->render('auth/create-account', [
             'usuario' => $usuario,
             'alertas' => $alertas
