@@ -23,6 +23,7 @@ $router->post('/create-account', [LoginController::class, 'create']);
 
 //confirm account
 $router->get('/confirm-account', [LoginController::class, 'confirm']);
+$router->get('/message', [LoginController::class, 'message']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador

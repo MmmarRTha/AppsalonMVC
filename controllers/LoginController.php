@@ -53,13 +53,38 @@ class LoginController
 
                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
                    $email->sendConfirmation();
-                   dd($usuario);
+
+                   //Create new user
+                   $resultado = $usuario->guardar();
+                   //dd($usuario);
+                   if($resultado)
+                   {
+                       header('Location: /message');
+                   }
                }
             }
         }
 
         $router->render('auth/create-account', [
             'usuario' => $usuario,
+            'alertas' => $alertas
+        ]);
+    }
+
+    public static function message(Router $router) 
+    {
+        $router->render('auth/message');
+    }
+
+    public static function confirm(Router $router) 
+    {
+        $alertas = [];
+        $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
+
+        dd($usuario);
+
+        $router->render('auth/confirm-account', [
             'alertas' => $alertas
         ]);
     }
