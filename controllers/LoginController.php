@@ -52,7 +52,7 @@ class LoginController
                    $usuario->createToken();
 
                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
-                   dd($email);
+                   $email->sendConfirmation();
                    dd($usuario);
                }
             }

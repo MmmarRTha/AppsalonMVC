@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '005ffcc74939e12caeab9ee0b2bff0dc8ebd6ac9',
+        'reference' => '01bf6ea922de49fe9a1f5b7ee996f4c205c2c6ed',
         'name' => 'marthanieto/app-salon_php_mvc_js_sass',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '005ffcc74939e12caeab9ee0b2bff0dc8ebd6ac9',
+            'reference' => '01bf6ea922de49fe9a1f5b7ee996f4c205c2c6ed',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(

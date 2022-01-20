@@ -82,4 +82,5 @@ class Usuario extends ActiveRecord
     {
         $this->token = uniqid();
     }
+
 }
