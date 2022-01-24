@@ -63,7 +63,35 @@ class LoginController
 
     public static function forgot(Router $router) 
     {
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validateEmail();
+
+            if(empty($alertas))
+            {
+                $usuario = Usuario::where('email', $auth->email);
+                if($usuario && $usuario->confirmado === "1")
+                {
+                    //genera token
+                    $usuario->createToken();
+                    $usuario->guardar();
+
+                    //TODO: enviar email
+
+                    Usuario::setAlerta('exito', 'Revisa tu e-mail');
+                }
+                else
+                {
+                    Usuario::setAlerta('error', 'El usuario no existe o no esta confirmado');
+                }
+            }
+        }
+        $alertas = Usuario::getAlertas();
+
         $router->render('auth/forgot-password', [
+            'alertas' => $alertas
 
         ]);
     }
