@@ -40,7 +40,6 @@ class Usuario extends ActiveRecord
         {
             self::$alertas['error'][] = 'El nombre es obligatorio';
         }
-
         if(!$this->apellido)
         {
             self::$alertas['error'][] = 'El apellido es obligatorio';
@@ -98,6 +97,19 @@ class Usuario extends ActiveRecord
     public function createToken()
     {
         $this->token = uniqid();
+    }
+
+    public function checkAndValidatePassword($password)
+    {
+        $resultado = password_verify($password, $this->password);
+        if(!$resultado || !$this->confirmado)
+        {
+            self::$alertas['error'][] = 'Contraseña incorrecta o tu cuenta no ha sido confirmada.';
+        }
+        else
+        {
+            return true;
+        }
     }
 
 }
