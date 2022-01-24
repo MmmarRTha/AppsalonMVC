@@ -10,6 +10,6 @@
 </form>
 
 <div class="acciones">
-    <a href="/">¿Ya tienes una cuenta? Inicia Sesion</a>
+    <a href="/">¿Ya tienes una cuenta? Inicia sesión</a>
     <a href="/create-account">¿Aun no tienes una cuenta? Crear una</a>
 </div>

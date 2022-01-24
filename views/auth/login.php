@@ -1,5 +1,7 @@
 <h1 class="nombre-pagina">Login</h1>
-<p class="descripcion-pagina">Inicia sesion con tus datos</p>
+<p class="descripcion-pagina">Inicia sesión con tus datos</p>
+
+<?php include_once __DIR__ . "/../templates/alertas.php"; ?>
 
 <form class="formulario" method="POST" action="/">
     <div class="campo">
@@ -12,7 +14,7 @@
         <input type="password" id="password" placeholder="Tu password" name="password">
     </div>
 
-    <input type="submit" class="boton" value="Iniciar Sesion">
+    <input type="submit" class="boton" value="Iniciar sesión">
 </form>
 
 <div class="acciones">

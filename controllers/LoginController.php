@@ -9,7 +9,16 @@ class LoginController
 {
     public static function login(Router $router) 
     {
-        $router->render('auth/login');
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validateLogin();
+        }
+        
+        $router->render('auth/login', [
+            'alertas' => $alertas
+        ]);
     }
 
     public static function logout() 
@@ -82,8 +91,24 @@ class LoginController
         $token = s($_GET['token']);
         $usuario = Usuario::where('token', $token);
 
-        dd($usuario);
+        if(empty($usuario))
+        {
+            //Mostrar mensaje error
+            Usuario::setAlerta('error', 'Token no válido');
+        }
+        else
+        {
+            //Modificar a usuario confirmado
+            $usuario->confirmado = "1";
+            $usuario->token = null;
+            $usuario->guardar();
+            Usuario::setAlerta('exito', 'Tu cuenta ha sido confirmada correctamente.');
+        }
 
+        //Obtener alertas
+        $alertas = Usuario::getAlertas();
+
+        //Renderizar la vista
         $router->render('auth/confirm-account', [
             'alertas' => $alertas
         ]);
