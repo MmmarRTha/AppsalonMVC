@@ -112,7 +112,27 @@ class LoginController
             Usuario::setAlerta('error', 'Token no válido');
             $error = true;
         }
-        //dd($usuario);
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            //leer el nuevo password y guardarlo
+            $password = new Usuario($_POST);
+            $alertas = $password->validatePassword();
+
+            if(empty($alertas))
+            {
+                $usuario->password = null;
+                $usuario->password = $password->password;
+                $usuario->hashPassword();
+                $usuario->token = null;
+
+                $resultado = $usuario->guardar();
+                if($resultado)
+                {
+                    header('Location: /');
+                }
+            }
+        }
 
         $alertas = Usuario::getAlertas();
         $router->render('auth/recover-password', [
