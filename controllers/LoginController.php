@@ -78,7 +78,7 @@ class LoginController
                     $usuario->createToken();
                     $usuario->guardar();
 
-                    //TODO: enviar email
+                    //enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $email->sendInstructions();
 
@@ -98,9 +98,11 @@ class LoginController
         ]);
     }
 
-    public static function recover() 
+    public static function recover(Router $router) 
     {
-        echo "Desde Recover";
+        $router->render('auth/recover-password', [
+
+        ]);
     }
 
     public static function create(Router $router) 

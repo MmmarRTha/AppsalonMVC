@@ -60,15 +60,15 @@ class Email
 
         $mail->setFrom('cuentas@appsalon.com');
         $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
-        $mail->Subject = 'Reestablece tu contraseňa';
+        $mail->Subject = 'Reestablece tu contraseña';
 
         // Set HTML
         $mail->isHTML(TRUE);
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestrablecer tu contraseňa, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recover?token=" . $this->token . "'>Reestablecer contraseňa.</a>";        
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestrablecer tu contraseña, sigue el siguiente enlace para hacerlo.</p>";
+        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recover?token=" . $this->token . "'>Reestablecer contraseña.</a>";        
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje.</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
