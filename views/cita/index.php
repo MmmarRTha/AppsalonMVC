@@ -20,7 +20,7 @@
         <form class="formulario">
             <div class="campo">
                 <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" placeholder="Tu Nombre" value="<?php echo $nombre; ?>" disabled>
+                <input id="nombre" type="text" placeholder="Tu Nombre" value="<?php echo $nombre; ?>">
             </div>
             <div class="campo">
                 <label for="fecha">Fecha</label>

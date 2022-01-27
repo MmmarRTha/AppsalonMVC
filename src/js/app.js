@@ -1,4 +1,6 @@
 let paso = 1;
+const pasoInicial = 1;
+const pasoFinal = 3;
 
 document.addEventListener('DOMContentLoaded', function() {
     iniciarApp();
@@ -8,6 +10,8 @@ function iniciarApp() {
     mostrarSeccion();
     tabs(); //Cambia la seccion cuando se presionen los tabs
     botonesPaginador();
+    paginaSiguiente();
+    paginaAnterior();
 }
 
 function mostrarSeccion() {
@@ -56,4 +60,28 @@ function botonesPaginador() {
         paginaAnterior.classList.remove('ocultar');
         paginaSiguiente.classList.remove('ocultar');
     }
+    mostrarSeccion();
+}
+
+function paginaAnterior()
+{
+    const paginaAnterior = document.querySelector('#anterior');
+    paginaAnterior.addEventListener('click', function() 
+    {
+        if(paso <= pasoInicial) return;
+        paso--;
+        botonesPaginador();
+    });
+}
+
+function paginaSiguiente()
+{
+    const paginaSiguiente = document.querySelector('#siguiente');
+    paginaSiguiente.addEventListener('click', function() 
+    {
+        if(paso >= pasoFinal) return;
+        paso++;
+        botonesPaginador();
+    });
+
 }
