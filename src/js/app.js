@@ -310,7 +310,18 @@ function mostrarResumen()
     resumen.appendChild(botonReservar);
 }
 
-function reservarCita()
+async function reservarCita()
 {
-    console.log('Reservando cita...');
+    const datos = new FormData();
+    datos.append('nombre', 'Martha');
+
+    const url = 'http://localhost:3000/api/appointments';
+
+    const respuesta = await fetch(url, {
+        method: 'POST'
+    });
+
+    const resultado = await respuesta.json();
+    console.log(resultado);
+    //console.log([...datos]);
 }
