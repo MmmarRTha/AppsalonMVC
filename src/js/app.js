@@ -162,7 +162,6 @@ function seleccionarServicio(servicio)
         cita.servicios = [...servicios, servicio];
         divServicio.classList.add('seleccionado');
     }
-    console.log(cita);
 }
 
 function nombreCliente()
@@ -202,7 +201,6 @@ function seleccionarHora()
         else
         {
             cita.hora = e.target.value;
-            console.log(cita);
         }
     });
 }
@@ -318,7 +316,8 @@ async function reservarCita()
     const url = 'http://localhost:3000/api/appointments';
 
     const respuesta = await fetch(url, {
-        method: 'POST'
+        method: 'POST',
+        body: datos
     });
 
     const resultado = await respuesta.json();

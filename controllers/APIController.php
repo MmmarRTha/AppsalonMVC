@@ -15,7 +15,7 @@ class APIController
     public static function save()
     {
         $respuesta = [
-            'mensaje' => 'Todo ok'
+            'datos' => $_POST
         ];
         echo json_encode($respuesta);
     }
