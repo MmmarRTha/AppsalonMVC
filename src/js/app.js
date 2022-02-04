@@ -20,6 +20,7 @@ function iniciarApp() {
     paginaSiguiente();
     paginaAnterior();
     consultarAPI();
+    idCliente();
     nombreCliente();
     seleccionarFecha();
     seleccionarHora();
@@ -162,6 +163,11 @@ function seleccionarServicio(servicio)
         cita.servicios = [...servicios, servicio];
         divServicio.classList.add('seleccionado');
     }
+}
+
+function idCliente()
+{
+    cita.id = document.querySelector('#id').value;
 }
 
 function nombreCliente()
@@ -310,16 +316,16 @@ function mostrarResumen()
 
 async function reservarCita()
 {
-    const { nombre, fecha, hora, servicios } = cita;
+    const { nombre, fecha, hora, servicios, id } = cita;
 
     const idServicios = servicios.map(servicio => servicio.id);
-
+    
     const datos = new FormData();
-    datos.append('nombre', nombre);
     datos.append('fecha', fecha);
     datos.append('hora', hora);
+    datos.append('usuarioId', id);
     datos.append('servicios', idServicios);
-
+    
     const url = 'http://localhost:3000/api/appointments';
 
     const respuesta = await fetch(url, {
