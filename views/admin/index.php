@@ -8,7 +8,7 @@
      <form class="formulario">
          <div class="campo">
              <label for="fecha">Fecha</label>
-             <input type="date" id="fecha" name="fecha">
+             <input type="date" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
          </div>
      </form>
  </div>
@@ -40,9 +40,13 @@
                 $proximo = $citas[$key + 1]->id ?? 0;
                 if(esUltimo($actual, $proximo))
                 { ?>
-                    <p class="total">Total: <span><?php echo $total; ?></span></p>
+                    <p class="total">Total: <span>$<?php echo $total; ?></span></p>
             <?php 
                 }
         } ?>
     </ul>
  </div>
+
+ <?php
+    $script = "<script src='build/js/buscador.js'></script>"
+ ?>
