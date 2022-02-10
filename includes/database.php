@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'password', 'appsalon');
+$db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_BD']);
 
 if(!$db)
 {
@@ -9,15 +9,7 @@ if(!$db)
      echo "error de depuracion" . mysqli_connect_error();
      exit;
 }
-
-// $bdhost = "localhost";
-// $bduser = "root";
-// $bdpass = "password";
-// $bdname = "appsalon";
-// $dsn = "mysql:host=$bdhost;dbname=$bdname";
-
-// try{
-//      $db = new PDO($dsn, $bduser, $bdpass);
-// } catch(PDOException $error) {
-//      echo $error->getMessage();
+// else
+// {
+//      echo "Conectado";
 // }
