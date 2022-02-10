@@ -35,7 +35,6 @@ class ServicioController
                 $servicio->guardar();
                 header('Location: /servicios');
             }
-            
         }
 
         $router->render('servicios/crear', [
@@ -48,13 +47,26 @@ class ServicioController
     public static function actualizar(Router $router)
     {
         session_start();
+
+        if(!is_numeric($_GET['id'])) return;
+        $servicio = Servicio::find($_GET['id']);
+        $alertas = [];
+
         if($_SERVER['REQUEST_METHOD'] === 'POST')
         {
-
+            $servicio->sincronizar($_POST);
+            $alertas = $servicio->validar();
+            if(empty($alertas))
+            {
+                $servicio->guardar();
+                header('Location: /servicios');
+            }
         }
 
         $router->render('servicios/actualizar', [
-            'nombre' => $_SESSION['nombre']
+            'nombre' => $_SESSION['nombre'],
+            'servicio' => $servicio,
+            'alertas' => $alertas
         ]);
     }
 
