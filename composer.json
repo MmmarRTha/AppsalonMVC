@@ -1,6 +1,6 @@
 {
-    "name": "marthanieto/casa-yoga",
-    "description": "Proyecto PHP8, MVC, SQL, SASS, Gulp",
+    "name": "marthanieto/casa-yoga-studio",
+    "description": "control de asistencia y pagos de casa yoga studio",
     "type": "project",
     "autoload": {
         "psr-4": {
