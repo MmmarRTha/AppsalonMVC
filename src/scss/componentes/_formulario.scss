@@ -2,21 +2,27 @@
 @use 'base/mixins' as m;
 
 .formulario {
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 100%;
 }
 
 .campo {
+    @include m.desktop {
     display: flex;
     margin-bottom: 2rem;
     align-items: center;
     label {
         flex: 0 0 12rem;
     }
+    }
     input {
         flex: 1;
         border: none;
-        padding: calc(v.$separacion / 4);
+        padding: calc(v.$separacion / 3);
         border-radius: 1rem;
+        display: block;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 }
