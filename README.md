@@ -1,7 +1,7 @@
 # AppsalonMVC
 
 ## Description
-AppsalonMVC is a modern MVC framework designed for building efficient and scalable web applications.
+Appsalon is a MVC PHP framework from scratch. 
 
 ## Features
 - Utilizes MVC architecture for clean separation of concerns.
