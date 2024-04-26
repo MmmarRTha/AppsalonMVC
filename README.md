@@ -1,7 +1,7 @@
 # AppsalonMVC
 
 ## Description
-Appsalon is a MVC PHP framework from scratch. 
+Appsalon it's an MVC PHP framework from scratch.
 
 ## Features
 - Utilizes MVC architecture for clean separation of concerns.
